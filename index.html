@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="./css/format.css">
     </head>
     <body style="margin:0px">
-        <audio autoplay loop>
+        <audio id="bgMusic" loop preload="auto">
             <source src="music/Shania Twain - You're Still The One (Lyrics).mp3" type="audio/mpeg">
             Your browser does not support the audio.
         </audio>
@@ -56,5 +56,17 @@
         <script type="text/javascript" src="./js/typeWriter.js"></script>
         <script type="text/javascript" src="./js/date.js"></script>
         <script type="text/javascript" src="./js/playImg.js"></script>
+        <script>
+const music = document.getElementById("bgMusic");
+
+function startMusic() {
+    music.play().catch(error => {
+        console.log("Music could not start:", error);
+    });
+}
+
+document.addEventListener("click", startMusic, { once: true });
+document.addEventListener("touchstart", startMusic, { once: true });
+        </script>
     </body>
 </html>
