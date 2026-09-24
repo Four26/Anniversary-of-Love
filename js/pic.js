@@ -1,0 +1,11 @@
+var ok = 0;
+var flag = 1;
+var myImage = document.getElementById("img");
+var myTxt = document.getElementById("Txt");
+var imageArray = ["pic/3.jpg", "pic/1.jpg", "pic/2.jpg", "pic/4.jpg", "pic/5.jpg", "pic/6.jpg", "pic/7.jpg", "pic/8.jpg", "pic/9.jpg", "pic/10.jpg", "pic/11.JPG", "pic/12.JPG", "pic/13.JPG", "pic/14.JPG", "pic/15.jpg", "pic/16.jpg"];
+var imageIndex = 0;
+var txtArray = ["Tong time na nag  simba ta sa ila lesly lugar.", "Cute ka dire bal", "Our first picture together, I love you 😘", "Beach picture sa look.", "Couple shirt yarn!", "Shooting our first short movie.", "Niwangers pa bal haha", "Peace yow!", "Yey! Graduate na sa senior high", "Work Immersion Day!", "Thank you sa pag prepare ani bal. I love you 🥰", "College days haha", "Graduate nasab utro haha", "Opaw haha", "Covid 19 days", "Romantic kaayo ta ani na time bal."];
+var len = imageArray.length;
+var t = 0;
+myImage.src = imageArray[0];
+myTxt.innerHTML = txtArray[0];

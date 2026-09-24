@@ -16,8 +16,8 @@ function showImage(){
 
 function play(){
 	if(t == 0){
-		myImage.setAttribute("src", "");
-		myTxt.innerHTML = "";
+		myImage.setAttribute("src", imageArray[0]);
+		myTxt.innerHTML = txtArray[0];
 		imageIndex = 0;
 		clearInterval(showImageInterval);
 	}
