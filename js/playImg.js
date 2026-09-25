@@ -54,6 +54,21 @@ function buttonFadeIn(){
 	}
 }
 
+// NEW: preload every image before the fast cycling loop starts
+function preloadImages(callback){
+	var loadedCount = 0;
+	imageArray.forEach(function(src){
+		var img = new Image();
+		img.onload = img.onerror = function(){
+			loadedCount++;
+			if(loadedCount === imageArray.length){
+				callback();
+			}
+		};
+		img.src = src;
+	});
+}
+
 
 
 function event(){

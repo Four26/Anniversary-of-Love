@@ -8,10 +8,30 @@ function timer() {
 	var start = new Date(2017, 8, 26, 20, 53, 0);
 	var now = new Date();
 
-	var years = now.getFullYear() - start.getFullYear();
-	var months = now.getMonth() - start.getMonth();
-	var days = now.getDate() - start.getDate();
+	// Use date-only values (midnight) for the Years/Months/Days count
+	// so it reflects the calendar date, not the exact time-of-day.
+	var startDateOnly = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+	var nowDateOnly = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
+	var years = nowDateOnly.getFullYear() - startDateOnly.getFullYear();
+	var months = nowDateOnly.getMonth() - startDateOnly.getMonth();
+	var days = nowDateOnly.getDate() - startDateOnly.getDate();
+
+	// Fix days
+	if (days < 0) {
+		var previousMonth = new Date(nowDateOnly.getFullYear(), nowDateOnly.getMonth(), 0);
+
+		days += previousMonth.getDate();
+		months--;
+	}
+
+	// Fix months
+	if (months < 0) {
+		months += 12;
+		years--;
+	}
+
+	// Hours/minutes/seconds still use the real clock time for the live countup
 	var hours = now.getHours() - start.getHours();
 	var minutes = now.getMinutes() - start.getMinutes();
 	var seconds = now.getSeconds() - start.getSeconds();
@@ -31,21 +51,6 @@ function timer() {
 	// Fix hours
 	if (hours < 0) {
 		hours += 24;
-		days--;
-	}
-
-	// Fix days
-	if (days < 0) {
-		var previousMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-
-		days += previousMonth.getDate();
-		months--;
-	}
-
-	// Fix months
-	if (months < 0) {
-		months += 12;
-		years--;
 	}
 
 	if (hours < 10) {
