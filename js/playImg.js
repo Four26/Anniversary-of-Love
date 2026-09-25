@@ -87,4 +87,4 @@ var showImageInterval;
 var imgInterval;
 var buttonInterval;
 
-event();
+preloadImages(event);   // ← wait for all images to load, THEN start the flash loop
